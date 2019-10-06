@@ -11,12 +11,12 @@ public class Node implements Comparable<Node> {
 
     //前序遍历
     public void frontShow() {
-        System.out.println(value);
-        if (left != null) {
-            left.frontShow();
+        System.out.println(this.value);
+        if (this.left != null) {
+            this. left.frontShow();
         }
-        if (right != null) {
-            right.frontShow();
+        if (this.right != null) {
+            this.right.frontShow();
         }
 
     }
