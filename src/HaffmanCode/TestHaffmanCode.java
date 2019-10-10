@@ -1,5 +1,7 @@
 package HaffmanCode;
 
+import Tree.ArrayBinaryTree;
+
 import javax.sound.midi.Soundbank;
 import java.util.*;
 
@@ -9,15 +11,84 @@ import java.util.*;
  * @Description:赫夫曼编码测试类
  */
 public class TestHaffmanCode {
+    static StringBuilder sb = new StringBuilder();
+    static Map<Byte, String> huffCodes = new HashMap<>();
+
 
     public static void main(String[] args) {
         String msg = "can you can a can as a can canner can a can.";
         byte[] beforeHaffman = msg.getBytes();
         //进行赫夫曼编码
         byte[] afterHaffman = huffmanZip(beforeHaffman);
-        System.out.println(beforeHaffman.length);
-        System.out.println(afterHaffman.length);
+        //使用赫夫曼编码进行解码
+        byte[] originBytes = decode(huffCodes, afterHaffman);
+        System.out.println(Arrays.toString(beforeHaffman));
+        System.out.println(new String(originBytes));
+
     }
+
+    /**
+     * 使用指定的赫夫曼编码进行解码
+     * @param huffCodes
+     * @param afterHaffman
+     * @return
+     */
+    private static byte[] decode(Map<Byte, String> huffCodes, byte[] afterHaffman) {
+        StringBuilder b = new StringBuilder();
+        //把byte数组转换为二进制的字符串
+        for (int i = 0; i < afterHaffman.length; i++) {
+            boolean flag = (i == afterHaffman.length - 1);
+            b.append(bytetoStr(!flag,afterHaffman[i]));
+        }
+        //把字符串按照指定的哈夫曼编码进行解码
+        //把Hashmap的键值对进行调换
+        Map<String, Byte> map = new HashMap<>();
+        for (Map.Entry<Byte, String> entry : huffCodes.entrySet()) {
+            map.put(entry.getValue(), entry.getKey());
+        }
+        //创建一个集合用于存储list
+        List<Byte> list = new ArrayList<>();
+        //处理字符串
+        for (int i = 0; i < b.length(); ) {
+            int count = 1;
+            boolean flag = true;
+            Byte by = null;
+            while (flag) {
+                //截取出一个byte
+                String key = b.substring(i, i+count);
+                by = map.get(key);
+                if (by != null) {
+                    flag = false;
+                } else {
+                    count++;
+                }
+            }
+            list.add(by);
+            i += count;
+
+        }
+        //把集合转换为数组
+        byte[] bytes = new byte[list.size()];
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = list.get(i);
+        }
+        return bytes;
+    }
+
+    private static String bytetoStr(boolean flag,byte b) {
+        int temp = b;
+        if (flag) {
+            temp |= 256;
+        }
+        String str = Integer.toBinaryString(temp);
+        if (flag) {
+            return str.substring(str.length() - 8);
+        } else {
+            return str;
+        }
+
+    }
+
 
     /**
      * 进行赫夫曼编码压缩的方法
@@ -52,7 +123,7 @@ public class TestHaffmanCode {
         for (byte b : beforeHaffman) {
             sb.append(huffmanCodes.get(b));
         }
-        //定义长度
+            //定义长度
         int len;
         if (sb.length() % 8 == 0) {
             len = sb.length() / 8;
@@ -77,8 +148,7 @@ public class TestHaffmanCode {
         return by;
     }
 
-    static StringBuilder sb = new StringBuilder();
-    static Map<Byte, String> huffCodes = new HashMap<>();
+
 
 
     /**
