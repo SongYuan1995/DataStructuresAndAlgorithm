@@ -41,5 +41,49 @@ public class Tree {
 
     }
 
+    /**
+     * 删除节点
+     * @param value
+     */
+    public void delte(int value) {
+        if (root == null) {
+            return;
+        }
+        //找到这个节点
+        Node target = search(value);
+        if (target == null) {
+            return;
+        }
+
+        //找到它的父节点
+        Node parent = searchParent(value);
+        //要删除的是叶子节点
+        if (target.left==null && target.right==null) {
+            //删除的节点是父节点的左子节点
+            if (parent.left.value == value) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+
+        }
+
+
+    }
+
+    /**
+     * 找到父节点
+     * @param value
+     * @return
+     */
+    public Node searchParent(int value) {
+        if ((root == null)) {
+            return null;
+        }
+        return root.searchParent(value);
+    }
+
+
+
 
 }

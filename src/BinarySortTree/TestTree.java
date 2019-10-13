@@ -18,6 +18,12 @@ public class TestTree {
         ///binarySortTree.middleShow();
 
         System.out.println(binarySortTree.search(9));
+        //测试查找父节点
+//        Node node1 = binarySortTree.searchParent(12);
+//        System.out.println(node1.value);
+        System.out.println("------");
+        binarySortTree.delte(12);
+        binarySortTree.middleShow();
 
 
     }
