@@ -1,9 +1,9 @@
 package BinarySortTree;
 
 /**
- * @Auther: SongYuan
- * @Date: 2019/10/10 13:12
- * @Description:二叉排序树的节点
+ * @Auther:  SongYuan
+ * @Date:  2019/10/10 13:12
+ * @Description: 二叉排序树的节点
  */
 public class Node {
 
