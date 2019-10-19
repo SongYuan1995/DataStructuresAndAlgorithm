@@ -1,4 +1,4 @@
-package listStructure;
+package listStructure04;
 
 public class NodeTest {
     public static void main(String[] args) {

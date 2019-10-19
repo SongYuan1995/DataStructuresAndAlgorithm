@@ -1,6 +1,4 @@
-package search;
-
-import sun.font.FontRunIterator;
+package search01;
 
 /**
  * 查找算法之线性查找

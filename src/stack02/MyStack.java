@@ -1,6 +1,4 @@
-package stack;
-
-import sun.font.TrueTypeFont;
+package stack02;
 
 public class MyStack {
     // 栈的底层我们使用数组来存储数据

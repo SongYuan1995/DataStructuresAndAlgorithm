@@ -1,7 +1,8 @@
-package listStructure;
+package listStructure04;
 
 /**
- * 单链表
+ * @Auther:  SongYuan
+ * @Description: 单链表
  */
 public class Node {
 
@@ -30,7 +31,7 @@ public class Node {
             //赋给当前节点
             current = next;
         }
-        //追加下一个节点
+        //向当前节点的最后一个子节点追加下一个节点
         current.next = node;
         return this;
     }

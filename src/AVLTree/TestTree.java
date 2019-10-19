@@ -9,7 +9,8 @@ public class TestTree {
 
     public static void main(String[] args) {
         //int[] arr = new int[]{8,9,6,7,5,4};
-        int[] arr = new int[]{2,1,4,3,5,6};
+        //int[] arr = new int[]{2,1,4,3,5,6};
+        int[] arr = new int[]{8,9,5,4,6,7};
         //创建一棵二叉排序树
         Tree binarySortTree = new Tree();
         for (int i : arr) {

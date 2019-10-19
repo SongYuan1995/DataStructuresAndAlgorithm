@@ -1,4 +1,4 @@
-package stack;
+package stack02;
 
 public class MyStackTest {
 

@@ -1,4 +1,4 @@
-package listStructure;
+package listStructure04;
 
 /**
  * 循环链表

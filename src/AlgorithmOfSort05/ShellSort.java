@@ -1,4 +1,4 @@
-package Demo20_AlgorithmOfSort;
+package AlgorithmOfSort05;
 
 import java.util.Arrays;
 

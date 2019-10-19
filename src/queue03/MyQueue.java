@@ -1,5 +1,9 @@
-package queue;
+package queue03;
 
+/**
+ * @Auther:  SongYuan
+ * @Description: 队列实现
+ */
 public class MyQueue {
     int[] elements;
 

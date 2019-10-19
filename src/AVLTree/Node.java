@@ -74,8 +74,15 @@ public class Node {
 
         //检查是否平衡
         if (leftHeight() - rightHeight() >=2) {
-            //进行右旋转
-            rightRotate();
+            //进行双旋转
+            if (left != null && left.leftHeight() < left.rightHeight()) {
+                left.leftRotate();
+                rightRotate();
+            } else {
+                //进行右旋转
+                rightRotate();
+            }
+
         }
 
         if (leftHeight() - rightHeight() <=-2) {
